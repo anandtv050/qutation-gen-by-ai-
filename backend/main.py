@@ -7,6 +7,7 @@ import json
 import os
 from anthropic import Anthropic
 import google.generativeai as genai
+from groq import Groq
 from datetime import datetime
 from dotenv import load_dotenv
 from pdf_generator import HDCQuotationPDF
@@ -197,8 +198,28 @@ async def process_raw_text(request: ProcessRequest):
         anthropic_key = os.getenv("ANTHROPIC_API_KEY")
         openai_key = os.getenv("OPENAI_API_KEY")
 
-        # Priority: Gemini > Anthropic > OpenAI > Simple parsing
-        if gemini_key:
+        # Priority: Groq (FREE) > Gemini > Anthropic > OpenAI > Simple parsing
+        groq_key = os.getenv("GROQ_API_KEY")
+
+        if groq_key:
+            try:
+                items = await process_with_groq(request.raw_text, inventory_json, groq_key)
+                ai_provider = "Groq AI (FREE)"
+            except Exception as groq_error:
+                print(f"[Groq] Error: {groq_error}")
+                # Fallback to Gemini if Groq fails
+                if gemini_key:
+                    try:
+                        items = await process_with_gemini(request.raw_text, inventory_json, gemini_key)
+                        ai_provider = "Gemini AI"
+                    except Exception as gemini_error:
+                        print(f"[Gemini] Error: {gemini_error}")
+                        items = simple_parse(request.raw_text)
+                        ai_provider = "basic parsing (AI failed)"
+                else:
+                    items = simple_parse(request.raw_text)
+                    ai_provider = "basic parsing (Groq failed)"
+        elif gemini_key:
             try:
                 items = await process_with_gemini(request.raw_text, inventory_json, gemini_key)
                 ai_provider = "Gemini AI"
@@ -235,6 +256,60 @@ async def process_raw_text(request: ProcessRequest):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+async def process_with_groq(raw_text: str, inventory_json: str, api_key: str) -> List[QuotationItem]:
+    """Process using Groq AI (FREE and FAST)"""
+    print(f"\n{'='*50}")
+    print(f"[Groq] Starting process...")
+    print(f"[Groq] API Key (first 10 chars): {api_key[:10]}...")
+    print(f"[Groq] Raw text input: {raw_text}")
+
+    client = Groq(api_key=api_key)
+
+    full_prompt = f"""{SYSTEM_PROMPT}
+
+Inventory List:
+{inventory_json}
+
+Agent Input:
+{raw_text}"""
+
+    print(f"[Groq] Prompt length: {len(full_prompt)} chars")
+    print(f"[Groq] Sending request to Groq API...")
+
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {"role": "user", "content": full_prompt}
+        ],
+        temperature=0.2,
+        max_tokens=4096,
+    )
+
+    # Parse AI response
+    response_text = response.choices[0].message.content.strip()
+    print(f"[Groq] Response received!")
+    print(f"[Groq] Response length: {len(response_text)} chars")
+    print(f"[Groq] Response preview: {response_text[:500]}...")
+
+    # Extract JSON from response (in case there's markdown)
+    if "```json" in response_text:
+        response_text = response_text.split("```json")[1].split("```")[0].strip()
+    elif "```" in response_text:
+        response_text = response_text.split("```")[1].split("```")[0].strip()
+
+    print(f"[Groq] Extracted JSON: {response_text[:300]}...")
+    parsed_response = json.loads(response_text)
+
+    # Handle both formats: direct array or object with "items" field
+    if isinstance(parsed_response, list):
+        items_data = parsed_response
+    elif isinstance(parsed_response, dict) and "items" in parsed_response:
+        items_data = parsed_response["items"]
+    else:
+        raise ValueError("Invalid response format from AI")
+
+    return [QuotationItem(**item) for item in items_data]
 
 async def process_with_gemini(raw_text: str, inventory_json: str, api_key: str) -> List[QuotationItem]:
     """Process using Google Gemini AI"""
