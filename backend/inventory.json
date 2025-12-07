@@ -1,0 +1,324 @@
+{
+  "cameras": {
+    "ip_cameras": [
+      {
+        "id": "cam_3mp_bullet",
+        "name": "3mp color bullet Ip ai camera tplink",
+        "description": "3mp color bullet Ip ai camera tplink ( 2 YEAR WARRANTY)",
+        "rate": 3990,
+        "warranty": "2 YEAR",
+        "type": "bullet",
+        "resolution": "3mp",
+        "features": ["color", "ai", "ip", "sound_recording"]
+      },
+      {
+        "id": "cam_3mp_color",
+        "name": "3mp color Ip AI camera colour with sound recording",
+        "description": "3mp color Ip AI camera colour with sound recording ( 2 YEAR WARRANTY)",
+        "rate": 3299,
+        "warranty": "2 YEAR",
+        "type": "standard",
+        "resolution": "3mp"
+      },
+      {
+        "id": "cam_4mp_360",
+        "name": "4mp 360 camera ai",
+        "description": "4mp 360 camera ai ( 2 year warranty)",
+        "rate": 9600,
+        "warranty": "2 YEAR",
+        "type": "360",
+        "resolution": "4mp",
+        "features": ["360_rotation", "ai"]
+      },
+      {
+        "id": "cam_cctv_low",
+        "name": "CCTV Camera - Low Quality",
+        "description": "CCTV Camera - Low Quality",
+        "rate": 2500,
+        "type": "analog",
+        "quality": "low"
+      }
+    ]
+  },
+  
+  "nvr_dvr": {
+    "nvr": [
+      {
+        "id": "nvr_8ch_tplink",
+        "name": "Nvr 8channel tp link",
+        "description": "Nvr 8channel tp link (2 YEAR WARRANTY)",
+        "rate": 6000,
+        "channels": 8,
+        "brand": "tplink",
+        "warranty": "2 YEAR"
+      },
+      {
+        "id": "nvr_8ch",
+        "name": "Nvr 8 channel",
+        "description": "Nvr 8 channel ( 2 YEAR WARRANTY )",
+        "rate": 6900,
+        "channels": 8,
+        "warranty": "2 YEAR"
+      }
+    ]
+  },
+  
+  "storage": {
+    "hard_disk": [
+      {
+        "id": "hdd_wd_purple_2tb",
+        "name": "WD PURPLE SURVAILLANCE 2TB Hard disk",
+        "description": "WD PURPLE SURVAILLANCE 2 TB Hard disk ( 2 year warranty)",
+        "rate": 7500,
+        "capacity": "2TB",
+        "brand": "WD",
+        "type": "surveillance",
+        "warranty": "2 YEAR"
+      },
+      {
+        "id": "hdd_toshiba_4tb",
+        "name": "4TB TOSHIBA surveillance Hard disk",
+        "description": "4TB TOSHIBA surveillance Hard disk (2 year warranty)",
+        "rate": 8600,
+        "capacity": "4TB",
+        "brand": "TOSHIBA",
+        "type": "surveillance",
+        "warranty": "2 YEAR"
+      }
+    ]
+  },
+  
+  "networking": {
+    "switches": [
+      {
+        "id": "poe_switch_10port",
+        "name": "Ai POE switch 10 PORT",
+        "description": "Ai POE switch 10 PORT ( 1 year warranty)",
+        "rate": 4500,
+        "ports": 10,
+        "type": "POE",
+        "warranty": "1 YEAR"
+      },
+      {
+        "id": "poe_switch_gigabyte",
+        "name": "POE FULL gigabyte switch 10 PORT ai",
+        "description": "POE FULL gigabyte switch 10 PORT ai ( 1 YEAR WARRANTY )",
+        "rate": 3950,
+        "ports": 10,
+        "type": "POE_gigabyte",
+        "warranty": "1 YEAR"
+      }
+    ],
+    
+    "cables": [
+      {
+        "id": "cat6_cable",
+        "name": "Cat6 Cable",
+        "description": "Cat6 Cable",
+        "rate": 25,
+        "unit": "meter",
+        "type": "network"
+      },
+      {
+        "id": "patch_cord",
+        "name": "Patch code",
+        "description": "Patch code",
+        "rate": 200,
+        "unit": "piece"
+      },
+      {
+        "id": "3core_wire",
+        "name": "3core wire",
+        "description": "3core wire",
+        "rate": 80,
+        "unit": "meter"
+      }
+    ],
+    
+    "connectors": [
+      {
+        "id": "jack_boots",
+        "name": "JACK and boots",
+        "description": "JACK and boots",
+        "rate": 25,
+        "unit": "piece",
+        "typically_needed": 2.5
+      }
+    ]
+  },
+  
+  "accessories": {
+    "display": [
+      {
+        "id": "hdmi_4k",
+        "name": "HDMI 4k",
+        "description": "HDMI 4k",
+        "rate": 650,
+        "type": "cable"
+      },
+      {
+        "id": "hdmi_3m_4k",
+        "name": "HDMI 3M 4K (NW)",
+        "description": "HDMI 3M 4K (NW)",
+        "rate": 650,
+        "type": "cable",
+        "length": "3m"
+      },
+      {
+        "id": "monitor",
+        "name": "Monitor",
+        "description": "Monitor",
+        "rate": 7000,
+        "type": "display"
+      }
+    ],
+    
+    "mounting": [
+      {
+        "id": "co_box_heavy",
+        "name": "Co box HEAVY",
+        "description": "Co box HEAVY",
+        "rate": 70,
+        "unit": "piece",
+        "typically_needed_per_cam": 1.5
+      }
+    ],
+    
+    "power": [
+      {
+        "id": "adaptor",
+        "name": "Adaptor",
+        "description": "Adaptor",
+        "rate": 300,
+        "unit": "piece"
+      },
+      {
+        "id": "pdu_surge",
+        "name": "Pdu surge protector",
+        "description": "Pdu surge protector",
+        "rate": 1500,
+        "unit": "piece"
+      },
+      {
+        "id": "pdu_surge_nw",
+        "name": "PDU SURGE PROTECTOR (NW)",
+        "description": "PDU SURGE PROTECTOR (NW)",
+        "rate": 1200,
+        "unit": "piece"
+      }
+    ],
+    
+    "peripherals": [
+      {
+        "id": "wireless_mouse",
+        "name": "Wireless mouse",
+        "description": "Wireless mouse",
+        "rate": 500,
+        "unit": "piece"
+      },
+      {
+        "id": "wireless_mouse_nw",
+        "name": "wire less mouse (NW)",
+        "description": "wire less mouse (NW)",
+        "rate": 450,
+        "unit": "piece"
+      },
+      {
+        "id": "mouse_ext",
+        "name": "Mouse ext (NW)",
+        "description": "Mouse ext (NW)",
+        "rate": 750,
+        "unit": "piece"
+      }
+    ],
+    
+    "misc": [
+      {
+        "id": "electrical_materials",
+        "name": "Electrical materials",
+        "description": "Electrical materials",
+        "rate": 1500,
+        "unit": "lot"
+      }
+    ]
+  },
+  
+  "services": {
+    "installation": [
+      {
+        "id": "nvr_config",
+        "name": "Nvr configuration charge",
+        "description": "Nvr configuration charge",
+        "rate": 1000,
+        "unit": "job"
+      },
+      {
+        "id": "ip_cam_install",
+        "name": "Ip camera installation AND CONFIGURATION CHARGE",
+        "description": "Ip camera installation AND CONFIGURATION CHARGE",
+        "rate": 1500,
+        "unit": "per_camera",
+        "min_charge": 2
+      },
+      {
+        "id": "installation_basic",
+        "name": "Installation Basic",
+        "description": "Installation Basic",
+        "rate": 5000,
+        "unit": "job"
+      }
+    ],
+    
+    "cabling": [
+      {
+        "id": "utp_cabling_white",
+        "name": "UTP CABLING CHARGE INCLUDING LABOUR AND MATERIALS (wite pipe)",
+        "description": "UTP CABLING CHARGE INCLUDING LABOUR AND MATERIALS (wite pipe)",
+        "rate": 83,
+        "unit": "meter",
+        "includes": ["labor", "white_pipe", "clips", "routing"]
+      },
+      {
+        "id": "utp_cabling_standard",
+        "name": "Utp cabling charge including labour white pipe",
+        "description": "Utp cabling charge including labour white pipe",
+        "rate": 85,
+        "unit": "meter"
+      }
+    ]
+  },
+  
+  "rules": {
+    "camera_dependencies": {
+      "ip_camera": {
+        "requires": ["nvr", "poe_switch_or_adaptor", "cable", "jack_boots", "mounting"],
+        "cable_per_camera": 35,
+        "jack_boots_per_camera": 3,
+        "co_box_per_camera": 1.5
+      },
+      "analog_camera": {
+        "requires": ["dvr", "adaptor", "cable", "mounting"],
+        "cable_per_camera": 40,
+        "co_box_per_camera": 1.5
+      }
+    },
+    
+    "nvr_dependencies": {
+      "requires": ["hard_disk", "hdmi", "monitor_optional", "mouse", "surge_protector"],
+      "configuration_needed": true
+    },
+    
+    "cabling_calculation": {
+      "average_per_camera": 35,
+      "building_height_factor": 3.5,
+      "horizontal_average": 15,
+      "wastage_factor": 1.15
+    },
+    
+    "standard_additions": {
+      "electrical_materials": "always_for_installations",
+      "surge_protector": "one_per_nvr",
+      "patch_cords": "2_per_switch_minimum"
+    }
+  }
+}
